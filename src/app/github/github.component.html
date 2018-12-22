@@ -1,0 +1,6 @@
+<h1 class="text-center mb-4 mb-md-5">Github GraphQL</h1>
+<app-github-search (search)="searchTerm$.next($event)"></app-github-search>
+<app-github-search-results class="my-4" [result]="result$ | async"></app-github-search-results>
+<ng-container *ngIf="result$ | async as result">
+    <app-pagination *ngIf="result.items.length && (result.hasPreviousPage || result.hasNextPage)" [pagination]="result" (previous)="loadPreviousPage($event)" (next)="loadNextPage($event)"></app-pagination>
+</ng-container>

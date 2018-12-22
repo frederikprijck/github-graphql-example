@@ -1,0 +1,4 @@
+<div class="d-flex justify-content-between">
+    <a href="#" [class.disabled]="!pagination?.hasPreviousPage" class="btn btn-primary" (click)="onPrevious($event)">Previous</a>
+    <a href="#" [class.disabled]="!pagination?.hasNextPage" class="btn btn-primary" (click)="onNext($event)">Next</a>
+</div>

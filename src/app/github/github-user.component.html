@@ -1,0 +1,18 @@
+<div class="d-flex w-100">
+    <img class="avatar mr-3" [src]="user.avatarUrl">
+    <div class="w-100">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{user.name}} <i *ngIf="user.type === 'Organization'" ngbTooltip="Organization" placement="bottom" class="fas fa-briefcase"></i></h5>
+            <small>@{{user.login}}</small>
+        </div>
+        <p class="mb-1">{{user.bio}}</p>
+        <div class="d-flex w-100 justify-content-between">
+            <small><i *ngIf="user.location" class="fa fa-map-marker-alt text-primary"></i> {{user.location}}</small>
+            <div class="d-none d-sm-block">
+                <a [href]="user.url + '?tab=followers'" class="badge badge-light mr-1 ml-1" *ngIf="user.followers">{{user.followers.totalCount}} followers</a>
+                <a [href]="user.url + '?tab=following'" class="badge badge-light mr-1 ml-1" *ngIf="user.following">{{user.following.totalCount}} following</a>
+                <a [href]="user.url + '?tab=stars'" class="badge badge-light mr-1 ml-1" *ngIf="user.starredRepositories">{{user.starredRepositories.totalCount}} starred repositories</a>
+            </div>
+        </div>
+    </div>
+</div> 

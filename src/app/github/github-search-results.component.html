@@ -1,0 +1,23 @@
+<ng-container *ngIf="result?.items?.length; then results; else noResults"></ng-container>
+
+<ng-template #results>
+    <p class="text-right mb-4">
+        <ng-container *ngIf="result.totalCount > 1; then plural; else singular"></ng-container>
+        
+        <ng-template #plural>
+            <small>{{result.totalCount}} users found.</small>
+        </ng-template>
+        <ng-template #singular>
+            <small>{{result.totalCount}} user found.</small>
+        </ng-template>
+    </p>
+    <div class="list-group">
+        <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let item of result?.items" [href]="item.url">
+            <app-github-user [user]="item"></app-github-user>
+        </a>
+    </div>
+</ng-template>
+
+<ng-template #noResults>
+    <app-no-results class="mt-5"></app-no-results>
+</ng-template>
